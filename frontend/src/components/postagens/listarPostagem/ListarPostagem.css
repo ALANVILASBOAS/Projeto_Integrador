@@ -1,4 +1,4 @@
-.text-decorator-none{
+.text-decorator-none {
     text-decoration: none;
 }
 
@@ -21,20 +21,20 @@
     margin-left: 68% !important;
 }
 
-.abotao{
+.abotao {
     size: small;
     background-color: rgb(17, 87, 110) !important;
     color: white !important;
     margin-left: 400px !important;
 }
 
-.ebotao{
-    size:small;
+.ebotao {
+    size: small;
     background-color: darkred !important;
     color: white !important;
 }
 
-.cardColor{
+.cardColor {
     background-color: #98C7E4 !important;
     border-radius: 5px !important;
     border-color: rgb(43, 43, 63) !important;
