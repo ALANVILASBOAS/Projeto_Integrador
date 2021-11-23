@@ -99,14 +99,6 @@ function CadastroPostagem() {
                     'Authorization': token
                 }
             })
-
-
-        }else{
-            post(`/postagens`, postagem, setPostagem, {
-                headers: {
-                    'Authorization': token
-                }
-            })
             toast.success("Postagem atualizada com sucesso", {
                 position: "top-right",
                 autoClose: 2000,
@@ -117,7 +109,14 @@ function CadastroPostagem() {
                 theme: "colored",
                 progress: undefined,
             })
-            toast.success("Postagem cadastrada com sucesso", {
+
+        }else{
+            post(`/postagens`, postagem, setPostagem, {
+                headers: {
+                    'Authorization': token
+                }
+            })
+            toast.success("Postagem atualizada com sucesso", {
                 position: "top-right",
                 autoClose: 2000,
                 hideProgressBar: false,
@@ -136,44 +135,45 @@ function CadastroPostagem() {
     }
 
     return (
-        <Container maxWidth="sm" className="topo paddingGeral">
-            <form onSubmit={onSubmit}>
+        <div>
+            <Box>
+                <Container maxWidth="sm" className="topo paddingGeral">
+                    <form onSubmit={onSubmit}>
                 
-                <Typography variant="h3" color="textPrimary" component="h1" align="center" className="textColor" >NOVA POSTAGEM</Typography>
-
-                <TextField value={postagem.titulo} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} id="titulo" label="Título" variant="outlined" name="titulo" color="primary" margin="normal" fullWidth className="border" />
-
-                <TextField value={postagem.texto} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} id="texto" label="Texto" name="texto" variant="outlined" margin="normal" fullWidth className="border"/>
-
+                        <Typography variant="h3" color="textPrimary" component="h1" align="center" className="textColor" >NOVA POSTAGEM</Typography>
+                        <TextField value={postagem.titulo} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} id="titulo" label="Título" variant="outlined" name="titulo" color="primary" margin="normal" fullWidth className="border" />
+                        <TextField value={postagem.texto} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} id="texto" label="Texto" name="texto" variant="outlined" margin="normal" fullWidth className="border"/>
                 
-                <FormControl>
-                <Box className="">
-                <FormHelperText className="textColor">Escolha um tema para a postagem</FormHelperText>
-                    <Select className="border"
-                        labelId="demo-simple-select-helper-label"
-                        id="demo-simple-select-helper"
-                        onChange={(e) => buscaId(`/temas/${e.target.value}`, setTema, {
-                            headers: {
-                                'Authorization': token
-                            }
-                        })}>
-                        {
-                            temas.map(tema => (
-                                <MenuItem value={tema.id}>{tema.descricao}</MenuItem>
-                            ))
-                        }
-                    </Select>
+                        <FormControl>
+                        <Box className="">
+                        <FormHelperText className="textColor">Escolha um tema para a postagem</FormHelperText>
+                            <Select className="border"
+                                labelId="demo-simple-select-helper-label"
+                                id="demo-simple-select-helper"
+                                onChange={(e) => buscaId(`/temas/${e.target.value}`, setTema, {
+                                    headers: {
+                                        'Authorization': token
+                                    }
+                                })}>
+                                {
+                                    temas.map(tema => (
+                                        <MenuItem value={tema.id}>{tema.descricao}</MenuItem>
+                                    ))
+                                }
+                            </Select>
                 
-                </Box>
-                <Box className="boxPadding">
-                <Button type="submit" variant="contained" className="botaoForm">
-                        Postar
-                    </Button>     
-                </Box>
-                </FormControl>
+                        </Box>
+                        <Box className="boxPadding">
+                        <Button type="submit" variant="contained" className="botaoForm">
+                                Postar
+                            </Button>
+                        </Box>
+                        </FormControl>
                 
-            </form>
-        </Container>
+                    </form>
+                </Container>
+            </Box>
+        </div>
     )
 }
 

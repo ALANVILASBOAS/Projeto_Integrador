@@ -5,10 +5,15 @@ import './Cadastro.css';
 import User from '../../models/User';
 import { cadastroUsuario } from '../../services/Service';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify'
+import { useDispatch } from 'react-redux';
+import { addToken } from '../../store/tokens/actions';
 
 function Cadastro() {
 
     let history = useHistory();
+    const dispatch = useDispatch();
+    const [token, setToken] = useState('');
 
     const [confirmarSenha, setConfirmarSenha] = useState<String>("")
     const [user, setUser] = useState<User>(
@@ -44,10 +49,29 @@ function Cadastro() {
         e.preventDefault()
         if (confirmarSenha == user.senha) {
             cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
-            alert('Usuario cadastrado com sucesso')
-            history.push("/home")
+            dispatch(addToken(token))
+            toast.success("usuario cadastrado com sucesso", {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined,
+            })
+            //history.push("/home")
         } else {
-            alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
+            toast.error("Dados inconsistentes. Favor verificar as informações de cadastro.", {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined,
+            })
         }
     }
 
@@ -58,7 +82,7 @@ function Cadastro() {
                 <Grid item xs={4} direction="row" className="retanguloCadastro" justifyContent="center">
                     <Box alignItems="center" flexDirection="column" >
                         <Box className='left-margin-cadastro logoHome'>
-                            <img src="https://i.imgur.com/EB2HE5Q.png" alt="logo" className="logoCadastro" width="210px" height="210px" />
+                            <img src="https://i.imgur.com/FpzQD5k.png" alt="logo" className="logoCadastro" width="210px" height="210px" />
                         </Box>
 
                         <Box alignItems="center">
@@ -90,7 +114,6 @@ function Cadastro() {
                                 <Button type='submit' variant='contained' color='primary'>
                                     Cadastrar
                                 </Button>
-
                             </Box>
                         </form>
                     </Box>

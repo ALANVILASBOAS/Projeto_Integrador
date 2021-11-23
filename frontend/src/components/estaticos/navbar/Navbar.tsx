@@ -20,7 +20,7 @@ function Navbar() {
 
     function goLogout() {
         dispatch(addToken(''))
-        toast.info("Usuario deslogado",{
+        toast.info("Usuario deslogado", {
             position: "top-right",
             autoClose: 2000,
             hideProgressBar: false,
@@ -35,70 +35,68 @@ function Navbar() {
 
     var navbarComponent;
 
-    if(token !==""){
+
+    if (token !== "") {
         navbarComponent = <div>
-        <AppBar position="fixed" className="navcor div">
-            <Toolbar variant="regular">
-                <Box className="cursor">
-                    <Typography variant="h5" color="inherit" >
-                        <Link to="/home">
-                            <img src="https://i.imgur.com/FpzQD5k.png" alt="logo" height="50px" />
-                        </Link>
-                    </Typography>
-                </Box>
-
-                <Box display="flex">
-
-                    <Box mx={1} className="cursor">
+            <AppBar position="fixed" className="navcor div alignItemsNav">
+                <Toolbar variant="regular">
+                    <Box className="cursor alignItemsNav">
+                        <Typography variant="h5" color="inherit" >
+                            <Link to="/home">
+                                <img src="https://cdn-icons-png.flaticon.com/512/758/758729.png" alt="logo" height="25px" />
+                            </Link>
+                        </Typography>
                     </Box>
 
-                    <Link to='/postagens' className='text-decorator-none'>
+                    <Box display="flex">
+
+                        <Box mx={1} className="cursor">
+                        </Box>
+
+
+
+                        
+                            <Box mx={1} className="cursor">
+                                <Typography variant="h6" color="inherit">
+                                    Doações
+                                </Typography>
+                            </Box>
+                        
+
+
                         <Box mx={1} className="cursor">
                             <Typography variant="h6" color="inherit">
-                                Postagens
+                                Notícias
                             </Typography>
                         </Box>
-                    </Link>
 
-                    <Link to="/temas" className='text-decorator-none'>
-                        <Box mx={1} className="cursor">
-                            <Typography variant="h6" color="inherit">
-                                Temas
-                            </Typography>
-                        </Box>
-                    </Link>
 
-                    <Link to="/formularioPostagem" className="text-decorator-none">
-                        <Box mx={1} className="cursor">
-                            <Typography variant="h6" color="inherit">
-                                Nova Postagem
-                            </Typography>
-                        </Box>
-                    </Link>
+                        <Link to="/sobre" className="text-decorator-none">
+                            <Box mx={1} className="cursor">
+                                <Typography variant="h6" color="inherit">
+                                    Sobre Nós
+                                </Typography>
+                            </Box>
+                        </Link>
 
-                    <Link to="/formularioTema" className="text-decorator-none">
-                        <Box mx={1} className="cursor">
-                            <Typography variant="h6" color="inherit">
-                                Novo Tema
-                            </Typography>
-                        </Box>
-                    </Link>
 
-                    <Link to="/login" className="text-decorator-none">
-                        <Box mx={1} className="cursor" onClick={goLogout}>
-                            <Typography variant="h6" color="inherit">
-                                Logout
-                            </Typography>
-                        </Box>
-                    </Link>
 
-                </Box>
+
+                        <Link to="/login" className="text-decorator-none">
+                            <Box mx={1} className="cursor" onClick={goLogout}>
+                                <Typography variant="h6" color="inherit">
+                                    Logout
+                                </Typography>
+                            </Box>
+                        </Link>
+
+                    </Box>
                     <Box display="flex" justifyContent="flex-end" >
-                </Box>
-                
-            </Toolbar>
-        </AppBar>
-    </div >
+                    </Box>
+
+                </Toolbar>
+            </AppBar>
+        </div >
 
     }
 
@@ -106,7 +104,7 @@ function Navbar() {
         <>
             {navbarComponent}
         </>
-        
+
     )
 }
 
